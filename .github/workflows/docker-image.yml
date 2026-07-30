@@ -1,0 +1,48 @@
+name: Docker CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t devops-ci-demo:latest \
+            -f docker/Dockerfile .
+
+      - name: Start container
+        run: |
+          docker run -d \
+            --name nginx-test \
+            devops-ci-demo:latest
+
+      - name: Validate nginx configuration
+        run: |
+          docker exec nginx-test nginx -t
+
+      - name: Check index.html exists
+        run: |
+          docker exec nginx-test \
+            test -f /usr/share/nginx/html/index.html
+
+      - name: Show nginx version
+        run: |
+          docker exec nginx-test nginx -v
+
+      - name: Stop container
+        if: always()
+        run: |
+          docker stop nginx-test || true
+          docker rm nginx-test || true
