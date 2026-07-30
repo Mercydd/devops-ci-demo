@@ -1,0 +1,40 @@
+name: Build and Test Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  docker:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -f docker/Dockerfile \
+            -t nginx-demo:latest .
+
+      - name: Validate nginx configuration
+        run: |
+          docker run --rm nginx-demo:latest nginx -t
+
+      - name: Check index.html exists
+        run: |
+          docker run --rm nginx-demo:latest \
+          test -f /usr/share/nginx/html/index.html
+
+      - name: Show nginx version
+        run: |
+          docker run --rm nginx-demo:latest nginx -v
