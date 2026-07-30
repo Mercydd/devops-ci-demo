@@ -24,7 +24,9 @@ spec:
 
       - name: nginx
 
-        image: ghcr.io/YOUR_GITHUB_USERNAME/nginx-demo:latest
+        image: nginx-demo:latest
+
+        imagePullPolicy: Never
 
         ports:
 
