@@ -24,9 +24,9 @@ spec:
 
       - name: nginx
 
-        image: nginx-demo:latest
+        image: mercydd/devops-ci-demo:latest
 
-        imagePullPolicy: Never
+        imagePullPolicy: Always
 
         ports:
 

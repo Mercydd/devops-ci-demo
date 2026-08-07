@@ -1,4 +1,4 @@
-name: Docker CI
+name: Docker CI/CD
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  validate:
+  validate-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,14 +19,14 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            -t devops-ci-demo:latest \
+            -t mercydd/devops-ci-demo:latest \
             -f docker/Dockerfile .
 
       - name: Start container
         run: |
           docker run -d \
             --name nginx-test \
-            devops-ci-demo:latest
+            mercydd/devops-ci-demo:latest
 
       - name: Validate nginx configuration
         run: |
@@ -46,3 +46,15 @@ jobs:
         run: |
           docker stop nginx-test || true
           docker rm nginx-test || true
+
+      - name: Login to Docker Hub
+        if: github.event_name == 'push'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker image
+        if: github.event_name == 'push'
+        run: |
+          docker push mercydd/devops-ci-demo:latest
