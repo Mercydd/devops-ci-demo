@@ -1,5 +1,4 @@
 apiVersion: apps/v1
-
 kind: Deployment
 
 metadata:
@@ -13,21 +12,15 @@ spec:
       app: nginx
 
   template:
-
     metadata:
       labels:
         app: nginx
 
     spec:
-
       containers:
+        - name: nginx
+          image: mercydd/devops-ci-demo:latest
+          imagePullPolicy: Always
 
-      - name: nginx
-
-        image: mercydd/devops-ci-demo:latest
-
-        imagePullPolicy: Always
-
-        ports:
-
-        - containerPort: 80
+          ports:
+            - containerPort: 80
