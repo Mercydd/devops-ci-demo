@@ -1,17 +1,582 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-    <title>My DevOps Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Personal DevOps laboratory running on K3s with Docker, GitHub Actions and Argo CD">
+
+    <title>DevOps Lab</title>
+
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-<h1>Hello Kubernetes</h1>
+<header class="navbar">
+    <div class="container nav-container">
 
-<p>Version 5</p>
+        <a href="#" class="logo">
+            <span class="logo-symbol">&gt;_</span>
+            DevOps Lab
+        </a>
+
+        <nav>
+            <a href="#overview">Overview</a>
+            <a href="#stack">Stack</a>
+            <a href="#pipeline">Pipeline</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            <span>LAB ONLINE</span>
+        </div>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="overview">
+
+        <div class="container hero-grid">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span class="terminal-icon">$</span>
+                    kubectl get deployment
+                </div>
+
+                <h1>
+                    Welcome to my
+                    <span>DevOps Lab</span>
+                </h1>
+
+                <p class="hero-description">
+                    A personal Kubernetes laboratory where I build,
+                    deploy, monitor and automate infrastructure using
+                    modern DevOps tools.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#stack" class="button primary">
+                        Explore stack
+                        <span>→</span>
+                    </a>
+
+                    <a href="#pipeline" class="button secondary">
+                        View pipeline
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="terminal-window">
+
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="terminal-title">
+                        devops@k3s:~
+                    </div>
+                </div>
+
+                <div class="terminal-body">
+
+                    <p>
+                        <span class="green">devops@k3s</span>:<span class="blue">~</span>$
+                        kubectl get nodes
+                    </p>
+
+                    <p class="output">
+                        NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        STATUS&nbsp;&nbsp;&nbsp;ROLES
+                    </p>
+
+                    <p class="output">
+                        k3s-lab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="green">Ready</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;control-plane
+                    </p>
+
+                    <br>
+
+                    <p>
+                        <span class="green">devops@k3s</span>:<span class="blue">~</span>$
+                        kubectl get pods
+                    </p>
+
+                    <p class="output">
+                        devops-lab&nbsp;&nbsp;&nbsp;
+                        <span class="green">Running</span>
+                    </p>
+
+                    <br>
+
+                    <p>
+                        <span class="green">devops@k3s</span>:<span class="blue">~</span>$
+                        <span class="cursor"></span>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- OVERVIEW -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    01 / OVERVIEW
+                </div>
+
+                <h2>
+                    Infrastructure as a playground
+                </h2>
+
+                <p>
+                    This environment is built to experiment with
+                    containerization, Kubernetes, CI/CD and GitOps.
+                </p>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-value">K3s</div>
+                    <div class="stat-label">Kubernetes</div>
+                    <div class="stat-description">
+                        Lightweight Kubernetes cluster
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value">CI/CD</div>
+                    <div class="stat-label">Automation</div>
+                    <div class="stat-description">
+                        Automated build and deployment pipeline
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value">GitOps</div>
+                    <div class="stat-label">Argo CD</div>
+                    <div class="stat-description">
+                        Declarative application delivery
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value">∞</div>
+                    <div class="stat-label">Experiments</div>
+                    <div class="stat-description">
+                        Continuous learning and improvement
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STACK -->
+
+    <section class="section section-alt" id="stack">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    02 / TECHNOLOGY STACK
+                </div>
+
+                <h2>
+                    Tools running the lab
+                </h2>
+
+                <p>
+                    Each component has a specific role in the deployment
+                    lifecycle.
+                </p>
+
+            </div>
+
+
+            <div class="stack-grid">
+
+                <article class="tech-card">
+
+                    <div class="tech-number">01</div>
+
+                    <div class="tech-icon docker">
+                        ◈
+                    </div>
+
+                    <h3>Docker</h3>
+
+                    <p>
+                        Packages the application and Nginx
+                        configuration into a portable container image.
+                    </p>
+
+                    <span class="tech-tag">CONTAINER</span>
+
+                </article>
+
+
+                <article class="tech-card">
+
+                    <div class="tech-number">02</div>
+
+                    <div class="tech-icon github">
+                        ●
+                    </div>
+
+                    <h3>GitHub Actions</h3>
+
+                    <p>
+                        Automatically builds and publishes a new
+                        container image after changes are pushed.
+                    </p>
+
+                    <span class="tech-tag">CI</span>
+
+                </article>
+
+
+                <article class="tech-card">
+
+                    <div class="tech-number">03</div>
+
+                    <div class="tech-icon kubernetes">
+                        ⬡
+                    </div>
+
+                    <h3>K3s</h3>
+
+                    <p>
+                        Lightweight Kubernetes distribution running
+                        the application inside the local lab.
+                    </p>
+
+                    <span class="tech-tag">ORCHESTRATION</span>
+
+                </article>
+
+
+                <article class="tech-card">
+
+                    <div class="tech-number">04</div>
+
+                    <div class="tech-icon argo">
+                        ◆
+                    </div>
+
+                    <h3>Argo CD</h3>
+
+                    <p>
+                        Continuously synchronizes the desired state
+                        from the GitOps repository with the cluster.
+                    </p>
+
+                    <span class="tech-tag">GITOPS</span>
+
+                </article>
+
+
+                <article class="tech-card">
+
+                    <div class="tech-number">05</div>
+
+                    <div class="tech-icon nginx">
+                        N
+                    </div>
+
+                    <h3>Nginx</h3>
+
+                    <p>
+                        Serves the static website from inside the
+                        Kubernetes workload.
+                    </p>
+
+                    <span class="tech-tag">WEB SERVER</span>
+
+                </article>
+
+
+                <article class="tech-card">
+
+                    <div class="tech-number">06</div>
+
+                    <div class="tech-icon future">
+                        +
+                    </div>
+
+                    <h3>Coming next</h3>
+
+                    <p>
+                        Prometheus, Grafana, Loki, Alertmanager,
+                        security and infrastructure automation.
+                    </p>
+
+                    <span class="tech-tag">ROADMAP</span>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PIPELINE -->
+
+    <section class="section" id="pipeline">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    03 / DELIVERY PIPELINE
+                </div>
+
+                <h2>
+                    From Git push to Kubernetes
+                </h2>
+
+                <p>
+                    The application follows a GitOps-based deployment flow.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline">
+
+                <div class="pipeline-step">
+
+                    <div class="pipeline-icon">
+                        01
+                    </div>
+
+                    <div>
+                        <h3>Git Push</h3>
+
+                        <p>
+                            Application changes are committed
+                            and pushed to GitHub.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step">
+
+                    <div class="pipeline-icon">
+                        02
+                    </div>
+
+                    <div>
+                        <h3>GitHub Actions</h3>
+
+                        <p>
+                            The CI pipeline builds and publishes
+                            a new Docker image.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step">
+
+                    <div class="pipeline-icon">
+                        03
+                    </div>
+
+                    <div>
+                        <h3>Docker Hub</h3>
+
+                        <p>
+                            The container image is stored in
+                            the container registry.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step">
+
+                    <div class="pipeline-icon">
+                        04
+                    </div>
+
+                    <div>
+                        <h3>Argo CD</h3>
+
+                        <p>
+                            Argo CD detects the desired state
+                            defined in the GitOps repository.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step">
+
+                    <div class="pipeline-icon">
+                        05
+                    </div>
+
+                    <div>
+                        <h3>K3s</h3>
+
+                        <p>
+                            Kubernetes pulls the image and
+                            runs the new application version.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="section section-alt" id="about">
+
+        <div class="container about-grid">
+
+            <div>
+
+                <div class="section-label">
+                    04 / ABOUT THE LAB
+                </div>
+
+                <h2>
+                    Built to learn by doing.
+                </h2>
+
+            </div>
+
+            <div>
+
+                <p class="about-text">
+                    This laboratory is a hands-on environment for
+                    learning DevOps engineering.
+                </p>
+
+                <p class="about-text">
+                    The goal is not simply to deploy an application,
+                    but to understand what happens at every stage:
+                    from a Git commit to a running workload inside
+                    Kubernetes.
+                </p>
+
+                <div class="future-list">
+
+                    <div>
+                        <span>→</span>
+                        Prometheus + Grafana
+                    </div>
+
+                    <div>
+                        <span>→</span>
+                        Centralized logging
+                    </div>
+
+                    <div>
+                        <span>→</span>
+                        Alerting
+                    </div>
+
+                    <div>
+                        <span>→</span>
+                        Security scanning
+                    </div>
+
+                    <div>
+                        <span>→</span>
+                        Infrastructure as Code
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div>
+            <strong>DevOps Lab</strong>
+            <span>Local Kubernetes playground</span>
+        </div>
+
+        <div>
+            K3s · Docker · GitHub Actions · Argo CD · Nginx
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="/js/app.js"></script>
 
 </body>
-
 </html>
